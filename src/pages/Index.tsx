@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRightLeft, Sparkles, Users, Globe } from "lucide-react";
+import { ArrowRightLeft, Sparkles, Users, Globe, LogIn, LogOut, User, Settings } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/hooks/use-toast";
 import LanguageSelector from "@/components/LanguageSelector";
 import RecordingButton from "@/components/RecordingButton";
 import TranslationCard from "@/components/TranslationCard";
 import MandalaPattern from "@/components/MandalaPattern";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Index = () => {
+  const { user, loading, signOut, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [fromLanguage, setFromLanguage] = useState("");
   const [toLanguage, setToLanguage] = useState("");
   const [isRecording, setIsRecording] = useState(false);
@@ -23,11 +36,36 @@ const Index = () => {
     setTranslatedText(translations[text] || "Translation will appear here...");
   };
 
+  const handleSignOut = async () => {
+    const { error } = await signOut();
+    if (!error) {
+      toast({
+        title: "Signed out",
+        description: "You have been successfully signed out.",
+      });
+    }
+  };
+
   const swapLanguages = () => {
     const temp = fromLanguage;
     setFromLanguage(toLanguage);
     setToLanguage(temp);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-cultural flex items-center justify-center">
+        <div className="text-center">
+          <img 
+            src="/lovable-uploads/45f8bfa4-6045-473c-a98a-4e54234031f2.png" 
+            alt="VaniVerse Logo" 
+            className="w-20 h-20 animate-pulse mx-auto mb-4"
+          />
+          <p className="text-muted-foreground">Loading VaniVerse...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-cultural relative overflow-hidden">
@@ -39,12 +77,44 @@ const Index = () => {
       <div className="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex-1" />
             <img 
               src="/lovable-uploads/45f8bfa4-6045-473c-a98a-4e54234031f2.png" 
               alt="VaniVerse Logo" 
               className="w-20 h-20 animate-float"
             />
+            <div className="flex-1 flex justify-end">
+              {isAuthenticated ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm" className="hover:bg-primary/10">
+                      <User className="w-4 h-4 mr-2" />
+                      {user?.email?.split('@')[0] || 'User'}
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuItem disabled>
+                      <span className="text-sm text-muted-foreground">{user?.email}</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                      <Settings className="w-4 h-4 mr-2" />
+                      Preferences
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={handleSignOut}>
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Button onClick={() => navigate("/auth")} variant="ghost" size="sm" className="hover:bg-primary/10">
+                  <LogIn className="w-4 h-4 mr-2" />
+                  Sign In
+                </Button>
+              )}
+            </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-mandala bg-clip-text text-transparent mb-3">
             VaniVerse
