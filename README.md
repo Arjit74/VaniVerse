@@ -1,9 +1,8 @@
 # 🌐 Vaniverse – Bridging Bharat’s Dialects with AI
 
 <div align="center">
-  <img src="./lovable-uploads/45f8bfa4-6045-473c-a98a-4e54234031f2.png" alt="Vaniverse Banner" width="700"/>
-</div>
-
+  <img src="assets/WhatsApp Image 2025-07-30 at 00.22.39_9351e8d2.jpg" alt="Vaniverse Banner" width="700"/>
+  
   **A project by Team VaniVerse for India's Real-Time Speech Challenge 2025**  
   [![Live Demo](https://img.shields.io/badge/Live_Demo-Coming_Soon-orange?style=for-the-badge&logo=vercel)](https://vaniverse.vercel.app)
 </div>
@@ -59,15 +58,15 @@ Vaniverse empowers speakers of rural and regional dialects (like Awadhi, Bhojpur
 
 ```plaintext
 🎤 User Speaks on Mic
-↓
+            ↓
 📡 Audio sent to backend (via WebSocket)
-↓
+            ↓
 🧠 Whisper → Transcription (STT)
-↓
+            ↓
 🌐 IndicTrans2 → Translation (Dialect → Hindi/English)
-↓
+            ↓
 🔊 Vakyansh / Mozilla TTS → Audio Output
-↓
+            ↓
 📲 Audio sent back and played on app
 ```
 
