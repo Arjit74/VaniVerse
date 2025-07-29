@@ -9,32 +9,51 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 180 100% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 180 100% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 180 100% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 180 83% 25%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 180 90% 35%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 21 90% 48%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 21 95% 60%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 180 20% 96%;
+    --muted-foreground: 180 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 21 90% 48%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 180 30% 90%;
+    --input: 180 30% 95%;
+    --ring: 180 83% 25%;
+
+    --mandala-teal: 180 83% 25%;
+    --mandala-orange: 21 90% 48%;
+    --mandala-gold: 45 95% 55%;
+    --cultural-green: 150 60% 40%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    --gradient-mandala: linear-gradient(135deg, hsl(var(--mandala-teal)), hsl(var(--mandala-orange)));
+    --gradient-cultural: linear-gradient(180deg, hsl(var(--primary) / 0.05), hsl(var(--secondary) / 0.05));
+
+    --shadow-mandala: 0 20px 40px hsl(var(--primary) / 0.2);
+    --shadow-cultural: 0 10px 30px hsl(var(--mandala-orange) / 0.15);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --radius: 0.5rem;
 
