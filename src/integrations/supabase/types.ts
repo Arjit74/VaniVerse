@@ -14,7 +14,108 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          audio_quality: string | null
+          created_at: string
+          display_name: string | null
+          favorite_input_dialect: string | null
+          favorite_output_language: string | null
+          id: string
+          playback_speed: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          audio_quality?: string | null
+          created_at?: string
+          display_name?: string | null
+          favorite_input_dialect?: string | null
+          favorite_output_language?: string | null
+          id?: string
+          playback_speed?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          audio_quality?: string | null
+          created_at?: string
+          display_name?: string | null
+          favorite_input_dialect?: string | null
+          favorite_output_language?: string | null
+          id?: string
+          playback_speed?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      saved_phrases: {
+        Row: {
+          created_at: string
+          from_language: string
+          id: string
+          original_text: string
+          title: string | null
+          to_language: string
+          translated_text: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          from_language: string
+          id?: string
+          original_text: string
+          title?: string | null
+          to_language: string
+          translated_text: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          from_language?: string
+          id?: string
+          original_text?: string
+          title?: string | null
+          to_language?: string
+          translated_text?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      translation_history: {
+        Row: {
+          audio_duration: number | null
+          created_at: string
+          from_language: string
+          id: string
+          original_text: string
+          to_language: string
+          translated_text: string
+          user_id: string
+        }
+        Insert: {
+          audio_duration?: number | null
+          created_at?: string
+          from_language: string
+          id?: string
+          original_text: string
+          to_language: string
+          translated_text: string
+          user_id: string
+        }
+        Update: {
+          audio_duration?: number | null
+          created_at?: string
+          from_language?: string
+          id?: string
+          original_text?: string
+          to_language?: string
+          translated_text?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
